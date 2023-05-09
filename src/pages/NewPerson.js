@@ -12,9 +12,22 @@ function NewPerson() {
     setValue(e.target.value); //this represents any state updater (setName) that we passed in
   }; //end of func
 
+  const onSubmitHandler = () => {
+    const newPerson = {
+      name: nameState,
+      title: titleState,
+      image: imageState,
+    };
+
+    console.log("New Person, yo: ", newPerson);
+
+
+
+  }; //end of submitH
+
   return (
     <div className="newperson">
-      <form>
+      <form  onSubmit={onSubmitHandler}>
         <input
           type="text"
           value={nameState}
