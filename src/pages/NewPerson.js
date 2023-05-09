@@ -12,7 +12,8 @@ function NewPerson() {
     setValue(e.target.value); //this represents any state updater (setName) that we passed in
   }; //end of func
 
-  const onSubmitHandler = () => {
+  const onSubmitHandler = async (event) => {
+    event.preventDefault();
     const newPerson = {
       name: nameState,
       title: titleState,
@@ -21,18 +22,25 @@ function NewPerson() {
 
     console.log("New Person, yo: ", newPerson);
 
-  const options = {
-	method: 'POST',
-	headers: {
-		'Content-Type': 'application/json'
-	}
-  }
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newPerson),
+    };
+    const responseData = await fetch(
+      "https://people-api-qn7s.onrender.com/people/",
+      options
+    );
 
+    const newPersonObj = await responseData.json();
+    console.log(newPersonObj);
   }; //end of submitH
 
   return (
     <div className="newperson">
-      <form  onSubmit={onSubmitHandler}>
+      <form onSubmit={onSubmitHandler}>
         <input
           type="text"
           value={nameState}
