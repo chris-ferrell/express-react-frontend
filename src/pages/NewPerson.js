@@ -21,7 +21,12 @@ function NewPerson() {
 
     console.log("New Person, yo: ", newPerson);
 
-
+  const options = {
+	method: 'POST',
+	headers: {
+		'Content-Type': 'application/json'
+	}
+  }
 
   }; //end of submitH
 
