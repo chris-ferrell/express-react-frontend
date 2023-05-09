@@ -4,7 +4,9 @@ import './People.css'
 function People() {
     return (
 		<div className="people">
-					  inside people
+			<h2>All The People </h2>
+			{/* render the people */}
+			
 		</div>
 	)
 }
