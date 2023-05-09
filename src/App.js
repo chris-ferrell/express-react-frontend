@@ -1,27 +1,27 @@
-
-import './App.css';
-import React, {Component} from 'react';
-import People from './pages/People'
+import { Navigate, Route, Routes } from "react-router-dom";
+import "./App.css";
+import People from "./pages/People";
+import NewPerson from "./pages/NewPerson";
+//container comp
 function App() {
+  let routes;
 
   routes = (
-  <Routes>
+    <Routes>
+      <Route exact={true} path="/people" element={<People />} />
+      <Route path="/people/new" element={<NewPerson />} />
 
-    <Route exact = { true } path = '/' element={ <People /> } />
-    <Route Path='/people/new' element={<NewPerson />} />
-
-  </Routes> 
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
   );
 
   return (
     <div className="App">
       App.js
-    <header>
-       <h1>People App</h1>
-    </header>
-    <main>
-      <People />
-    </main>
+      <header>
+        <h1>People App</h1>
+      </header>
+      <main>{routes}</main>
     </div>
   );
 }
