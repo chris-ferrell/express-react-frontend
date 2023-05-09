@@ -29,18 +29,14 @@ function People() {
   //if there is something in state, then loop through and use it
   if (people) {
     peopleList = people.map((person, index) => {
-      return (
-        <div key={index}>
-			<PersonItem key={index} person={person} />
-        </div>
-      );
+      return <PersonItem key={index} person={person} />;
     });
   }
 
   return (
     <div className="people">
       <h2>All the People</h2>
-      {people ? peopleList : <h2>LOADING...</h2>}
+      {people ? <ul>{peopleList}</ul> : <h2>LOADING...</h2>}
     </div>
   );
 }
